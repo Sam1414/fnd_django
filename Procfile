@@ -1,1 +1,1 @@
-web: gunicorn apps:app
+web: gunicorn fnd_django.wsgi
