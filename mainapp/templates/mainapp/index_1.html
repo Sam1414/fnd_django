@@ -1,0 +1,68 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Fake News Detection | Home{% endblock %}
+{% block style %}
+<style type="text/css">
+    body {
+        background: #dfe6e9;
+    }
+
+    .main-content {
+        padding-top: 100px;
+        background: #2d3436;
+        color: white;
+    }
+
+    .main-content p {
+        font-family: 'Abel', sans-serif;
+    }
+
+    label {
+        visibility: hidden;
+    }
+
+    .col-form-label {
+        display: none;
+    }
+
+    .lead-head {
+        font-family: 'Anton', sans-serif;
+    }
+</style>
+{% endblock %}
+
+{% block script %}
+<script>
+
+    function placeholder() {
+        document.getElementsByName('heading')[0].placeholder = 'Enter News Article Link Here';
+    }
+
+</script>
+{% endblock %}
+
+{% block body %}
+onload="placeholder()"
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h1 class="lead-head"><b>Fake News Detection</b></h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <p>By clicking on 'Search', you agree to Fake News Detection's <a href="#" target="_blank">Terms of
+                            Service</a>
+                        and <a href="#" target="_blank">Privacy Policy</a></p>
+                    <button type="submit" name="submit" class="btn btn-info">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
