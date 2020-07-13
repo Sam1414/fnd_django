@@ -1,0 +1,1 @@
+web: gunicorn fnd_django.wsgi
