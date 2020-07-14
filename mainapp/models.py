@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django import forms
 import json
 import os
+import time
 # import nltk
 # from nltk.stem import PorterStemmer
 # import numpy as np
@@ -31,6 +32,7 @@ def mod(request, forms):
 
     # While loop runs till Output.json is empty
     while(os.stat('Output.json').st_size == 0):
+        time.sleep(1)
         pass
 
     o = open('Output.json', 'r+')
